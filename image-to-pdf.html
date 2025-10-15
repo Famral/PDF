@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image to PDF Converter | Convert Images to PDF online</title>
+    <meta name="description"
+        content="Convert images (JPG, PNG, etc.) to PDF easily and for free. Upload your images, arrange them, and download a single PDF file. No signup required!">
+    <meta name="keywords"
+        content="image to pdf, jpg to pdf, png to pdf, convert image to pdf, free pdf tool, online pdf converter">
+    <meta name="author" content="Famral">
+    <meta name="robots" content="index, follow">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Image to PDF Converter | Convert Images to PDF online">
+    <meta property="og:description"
+        content="Convert images (JPG, PNG, etc.) to PDF easily and for free. Upload your images, arrange them, and download a single PDF file. No signup required!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pdf.famral.com/image-to-pdf">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Image to PDF Converter | Free Online Tool">
+    <meta name="twitter:description"
+        content="Convert images (JPG, PNG, etc.) to PDF easily and for free. Upload your images, arrange them, and download a single PDF file. No signup required!">
+    <link rel="icon" type="image/x-icon" href="https://www.famral.com/favicon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            color: #1e293b;
+        }
+
+        /* Navbar Styles */
+        .navbar-custom {
+            background: #fff;
+            border-bottom: 1px solid #e5e7eb;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            margin-bottom: 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1.5rem;
+            height: 60px;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2563eb;
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .navbar-logo img {
+            height: 32px;
+            margin-right: 10px;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 1.2rem;
+        }
+
+        .navbar-links a {
+            color: #1e293b;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.05rem;
+            padding: 6px 14px;
+            border-radius: 6px;
+            transition: background 0.2s, color 0.2s;
+            display: block;
+        }
+
+        .navbar-links a:hover,
+        .navbar-links a.active {
+            background: #e0e7ff;
+            color: #2563eb;
+        }
+
+        .navbar-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: #2563eb;
+            cursor: pointer;
+        }
+
+        @media (max-width: 800px) {
+            .navbar-container {
+                padding: 0 0.7rem;
+            }
+
+            .navbar-links {
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background: #fff;
+                flex-direction: column;
+                gap: 0;
+                min-width: 170px;
+                box-shadow: 0 4px 24px rgba(37, 99, 235, 0.08);
+                border-radius: 0 0 10px 10px;
+                border: 1px solid #e5e7eb;
+                z-index: 2000;
+                padding: 0.5rem 0;
+                display: none;
+            }
+
+            .navbar-links.show {
+                display: flex;
+            }
+
+            .navbar-links a {
+                padding: 0.9rem 1.5rem;
+                border-radius: 0;
+                font-size: 1.08rem;
+                color: #1e293b;
+                background: none;
+                border-bottom: 1px solid #f1f5f9;
+                margin: 0;
+            }
+
+            .navbar-links a:last-child {
+                border-bottom: none;
+            }
+
+            .navbar-toggle {
+                display: block;
+            }
+        }
+
+        /* Main Content Styles */
+        .container {
+            max-width: 500px;
+            margin: 2.5rem auto;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 4px 24px rgba(37, 99, 235, 0.08);
+            padding: 2rem 1.5rem 2.5rem 1.5rem;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2563eb;
+            margin-bottom: 1.2rem;
+            font-size: 2rem;
+        }
+
+        .desc {
+            text-align: center;
+            color: #334155;
+            margin-bottom: 2rem;
+            font-size: 1.08rem;
+        }
+
+        .upload-section {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .custom-file-label {
+            display: inline-block;
+            padding: 0.7rem 1.5rem;
+            background: #2563eb;
+            color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .custom-file-label:hover {
+            background: #1e40af;
+        }
+
+        .image-list {
+            margin: 1.2rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .image-thumb {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.06);
+        }
+
+        .btn-convert {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: #2563eb;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            transition: background 0.2s;
+        }
+
+        .btn-convert:hover {
+            background: #1e40af;
+        }
+
+        .footer {
+            text-align: center;
+            color: #64748b;
+            margin-top: 2.5rem;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem 0.5rem 1.5rem 0.5rem;
+            }
+
+            .image-thumb {
+                width: 60px;
+                height: 60px;
+            }
+
+            h1 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar-custom">
+        <div class="navbar-container">
+            <a href="/" class="navbar-logo">
+                <img src="https://www.famral.com/logo.png" alt="Famral Logo">
+
+            </a>
+            <button class="navbar-toggle" aria-label="Open menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="navbar-links">
+                <a href="/">Home</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1><i class="fas fa-file-pdf"></i> Image to PDF Converter</h1>
+        <div class="desc">
+            Convert your images (JPG, PNG, etc.) to a single PDF file. Fast, free, and no signup required!
+        </div>
+        <div class="upload-section">
+            <label class="custom-file-label" for="imageInput">
+                <i class="fas fa-upload"></i> Select Images
+            </label>
+            <input type="file" id="imageInput" accept="image/*" multiple>
+        </div>
+        <div class="image-list" id="imageList"></div>
+        <button class="btn-convert" id="convertBtn" disabled>
+            <i class="fas fa-file-arrow-down"></i> Convert to PDF & Download
+        </button>
+    </div>
+
+    <!-- jsPDF CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        // Navbar mobile toggle
+        const navbarToggle = document.querySelector('.navbar-toggle');
+        const navbarLinks = document.querySelector('.navbar-links');
+        navbarToggle.addEventListener('click', function () {
+            navbarLinks.classList.toggle('show');
+        });
+        // Optional: close menu when clicking outside
+        document.addEventListener('click', function (e) {
+            if (!navbarToggle.contains(e.target) && !navbarLinks.contains(e.target)) {
+                navbarLinks.classList.remove('show');
+            }
+        });
+
+        // Image to PDF logic
+        const imageInput = document.getElementById('imageInput');
+        const imageList = document.getElementById('imageList');
+        const convertBtn = document.getElementById('convertBtn');
+        let images = [];
+
+        imageInput.addEventListener('change', function (e) {
+            images = Array.from(e.target.files);
+            imageList.innerHTML = '';
+            if (images.length > 0) {
+                convertBtn.disabled = false;
+            } else {
+                convertBtn.disabled = true;
+            }
+            images.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    const img = document.createElement('img');
+                    img.src = event.target.result;
+                    img.className = 'image-thumb';
+                    imageList.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            });
+        });
+
+        convertBtn.addEventListener('click', async function () {
+            if (images.length === 0) return;
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF();
+            for (let i = 0; i < images.length; i++) {
+                const imgFile = images[i];
+                const imgData = await fileToDataURL(imgFile);
+                const img = new Image();
+                img.src = imgData;
+                await new Promise(resolve => { img.onload = resolve; });
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                const pdfHeight = pdf.internal.pageSize.getHeight();
+                // Calculate image aspect ratio
+                let imgWidth = img.width;
+                let imgHeight = img.height;
+                let ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+                let w = imgWidth * ratio;
+                let h = imgHeight * ratio;
+                let x = (pdfWidth - w) / 2;
+                let y = (pdfHeight - h) / 2;
+                pdf.addImage(img, 'JPEG', x, y, w, h);
+                if (i < images.length - 1) pdf.addPage();
+            }
+            pdf.save('images.pdf');
+        });
+
+        function fileToDataURL(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = e => resolve(e.target.result);
+                reader.onerror = e => reject(e);
+                reader.readAsDataURL(file);
+            });
+        }
+    </script>
+</body>
+
+</html>
